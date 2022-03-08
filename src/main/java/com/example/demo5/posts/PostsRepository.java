@@ -1,5 +1,6 @@
 package com.example.demo5.posts;
 
+import com.example.demo5.reply.Reply;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
