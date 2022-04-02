@@ -17,7 +17,6 @@ public class Posts extends BaseTimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(length = 500, nullable = false)
-
     @NotBlank(message = "제목은 반드시 입력해야합니다.")
     private String title;
 

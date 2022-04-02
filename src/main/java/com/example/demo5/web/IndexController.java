@@ -45,11 +45,14 @@ public class IndexController {
     }
 
     @GetMapping("/posts/update/{id}")
-    public String postsUpdate(@PathVariable Long id, Model model) {
+    public String postsUpdate(@PathVariable Long id, Model model, @LoginUser SessionUser user) {
         PostsResponseDto dto = postsService.findById(id);
-        List<ReplyListResponseDto> dto2 = replyService.findAllDesc(id);
+        System.out.println(replyService.findAllDesc(String.valueOf(id)).toString());
+        model.addAttribute("reply", replyService.findAllDesc(String.valueOf(id)));
         model.addAttribute("post", dto);
-        if(!dto2.isEmpty()) model.addAttribute("reply", dto2);
+        if(user!=null){
+            model.addAttribute("userName", user.getName());
+        }
         return "posts-update";
     }
 }

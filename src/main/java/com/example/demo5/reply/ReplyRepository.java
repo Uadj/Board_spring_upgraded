@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface ReplyRepository extends JpaRepository<Reply, Long> {
-    @Query(value="select r from Reply r where r.BoardId like " +
-            "%:BoardId% order by r.id desc")
-    List<Reply> findAll(@Param("BoardId") Long BoardId);
+    @Query(value="select r from Reply r where r.boardId like " +
+            "%:boardId% order by r.id desc")
+    List<Reply> findAll(@Param("boardId") String boardId);
 }

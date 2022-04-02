@@ -9,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Builder
 @AllArgsConstructor
@@ -23,10 +24,16 @@ public class Reply extends BaseTimeEntity {
 
     private String author;
 
-    @Column(nullable = false, length = 500)
+    @Column(nullable = false, length = 500, columnDefinition = "TEXT")
     private String content;
+    private String boardId;
+    @Builder
+    public Reply(String content, String author, String boardId){
+        this.content = content;
+        this.author = author;
+        this.boardId = boardId;
+    }
 
-    private String BoardId;
 
     public void update(String content){
         this.content = content;

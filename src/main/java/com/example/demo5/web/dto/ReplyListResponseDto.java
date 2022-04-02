@@ -9,16 +9,17 @@ import java.time.LocalDateTime;
 @Getter
 public class ReplyListResponseDto {
     private Long id;
+    private String boardId;
     private String content;
     private String author;
     private LocalDateTime modifiedDate;
-    private String BoardId;
+
 
     public ReplyListResponseDto(Reply entity){
         this.id = entity.getId();
         this.content = entity.getContent();
+        this.boardId = entity.getBoardId();
         this.author = entity.getAuthor();
         this.modifiedDate = entity.getModifiedDate();
-        this.BoardId = entity.getBoardId();
     }
 }

@@ -97,7 +97,6 @@ var main2 = {
     },
     rsave : function () {
         var data = {
-            author: $('#author').val(),
             content: $('#content').val(),
         };
 

@@ -4,24 +4,27 @@ import com.example.demo5.posts.Posts;
 import com.example.demo5.reply.Reply;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Getter
+@NoArgsConstructor
 public class ReplySaveRequestDto {
-    private Long id;
     private String content;
+    private String boardId;
     private String author;
 
     @Builder
-    public ReplySaveRequestDto(Long id, String content, String author){
-        this.id = id;
+    public ReplySaveRequestDto(String content, String boardId, String author){
         this.content = content;
+        this.boardId = boardId;
         this.author = author;
     }
     public Reply toEntity(){
         return Reply.builder()
                 .content(content)
+                .boardId(boardId)
                 .author(author)
                 .build();
     }

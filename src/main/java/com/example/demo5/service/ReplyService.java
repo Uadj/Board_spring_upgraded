@@ -36,7 +36,7 @@ public class ReplyService {
     }
 
     @Transactional(readOnly = true)
-    public List<ReplyListResponseDto> findAllDesc(Long BoardId){
+    public List<ReplyListResponseDto> findAllDesc(String BoardId){
         return replyRepository.findAll(BoardId).stream()
                 .map(ReplyListResponseDto::new)
                 .collect(Collectors.toList());
