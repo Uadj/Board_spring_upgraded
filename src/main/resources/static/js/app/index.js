@@ -4,10 +4,7 @@ function getParameter(name) {
         results = regex.exec(location.search);
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
-var num=getParameter("num");
-const source = document.getElementById('boardnumber');
-source.innerHTML = num;
-
+//alert("The URL of this page is: " + window.location.href);
 var main = {
     init : function () {
         var _this = this;
@@ -24,11 +21,13 @@ var main = {
         });
     },
     save : function () {
+        var num = window.location.href;
+        num = num.slice(-1);
         var data = {
             title: $('#title').val(),
             author: $('#author').val(),
             content: $('#content').val(),
-            boardnumber: $('#boardnumber').val()
+            boardnumber: num,
         };
 
         $.ajax({
@@ -46,7 +45,9 @@ var main = {
     },
     update : function () {
         var data = {
-            content: $('#content').val()
+            title: $('#title').val(),
+            content: $('#content').val(),
+            boardnumber: $('#boardnumber').val(),
         };
         var id = $('#id').val();
         $.ajax({
@@ -79,27 +80,29 @@ var main = {
     }
 
 };
-
+console.log("s");
 var main2 = {
-    rinit : function () {
+    init : function () {
         var _this = this;
         $('#rbtn-save').on('click', function () {
-            _this.rsave();
+            _this.save();
         });
 
         $('#rbtn-update').on('click', function () {
-            _this.rupdate();
+            _this.update();
         });
 
         $('#rbtn-delete').on('click', function () {
-            _this.rdelete();
+            _this.delete();
         });
     },
-    rsave : function () {
+    save : function () {
         var data = {
-            content: $('#content').val(),
+            content: $('#rcontent').val(),
+            author: $('#rauthor').val(),
+            boardId: $('#id').val(),
         };
-
+        console.log(data);
         $.ajax({
             type: 'POST',
             url: '/api/v1/reply',
@@ -113,9 +116,9 @@ var main2 = {
             alert(JSON.stringify(error));
         });
     },
-    rupdate : function () {
+    update : function () {
         var data = {
-            content: $('#content').val()
+            content: $('#rcontent').val()
         };
         var id = $('#id').val();
         $.ajax({
@@ -131,7 +134,7 @@ var main2 = {
             alert(JSON.stringify(error));
         });
     },
-    rdelete : function () {
+    delete : function () {
         var id = $('#id').val();
 
         $.ajax({
@@ -149,4 +152,4 @@ var main2 = {
 
 };
 main.init();
-main2.rinit();
+main2.init();

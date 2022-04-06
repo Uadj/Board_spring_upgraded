@@ -4,6 +4,8 @@ import com.example.demo5.posts.Posts;
 import com.example.demo5.reply.Reply;
 import lombok.Getter;
 
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.time.LocalDateTime;
 
 @Getter
@@ -12,6 +14,7 @@ public class ReplyListResponseDto {
     private String boardId;
     private String content;
     private String author;
+    @Temporal(value = TemporalType.DATE)
     private LocalDateTime modifiedDate;
 
 

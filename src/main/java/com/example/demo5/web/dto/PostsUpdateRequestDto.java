@@ -13,10 +13,12 @@ import java.util.List;
 public class PostsUpdateRequestDto {
     private String title;
     private String content;
+    private String boardnumber;
     @Builder
-    public PostsUpdateRequestDto(String title, String content){
+    public PostsUpdateRequestDto(String title, String content, String boardnumber){
         this.title = title;
         this.content = content;
+        this.boardnumber = boardnumber;
     }
 
 }
