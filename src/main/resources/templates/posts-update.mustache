@@ -61,7 +61,7 @@
             <tr>
                 <td>{{author}}</td>
                 <td>{{content}}</td>
-                <td>{{modifiedDate}}</td>
+                <td id="date">{{modifiedDate}}</td>
             </tr>
         {{/reply}}
         </tbody>
@@ -72,6 +72,14 @@
     num = num.slice(-1);
     const source = document.getElementById('boardnumber');
     source.innerHTML = num;
+    const date = document.getElementById('date');
+    var datetime = date.innerHTML;
+    var y = datetime.slice(0,4);
+    var m = datetime.slice(6,7);
+    var d = datetime.slice(9,10);
+    var h = datetime.slice(11,12);
+    var min = datetime.slice(13,14);
+    date.innerHTML = y + "년 " + m  + "월 " + d + "일 " + ;
 </script>
 
 {{>layout/footer}}
