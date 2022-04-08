@@ -7,6 +7,7 @@ import lombok.Getter;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Getter
 public class ReplyListResponseDto {
@@ -15,7 +16,7 @@ public class ReplyListResponseDto {
     private String content;
     private String author;
     @Temporal(value = TemporalType.DATE)
-    private LocalDateTime modifiedDate;
+    private String modifiedDate;
 
 
     public ReplyListResponseDto(Reply entity){
@@ -23,6 +24,6 @@ public class ReplyListResponseDto {
         this.content = entity.getContent();
         this.boardId = entity.getBoardId();
         this.author = entity.getAuthor();
-        this.modifiedDate = entity.getModifiedDate();
+        this.modifiedDate = entity.getModifiedDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
     }
 }
