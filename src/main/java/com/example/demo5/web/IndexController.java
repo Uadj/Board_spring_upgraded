@@ -39,6 +39,11 @@ public class IndexController {
         }
         return "board2";
     }
+    @GetMapping("/signUp")
+    public String SignUp(){
+        return "signUp";
+    }
+
     @GetMapping("/posts/save")
     public String postsSave(){
         return "posts-save";
@@ -54,5 +59,5 @@ public class IndexController {
             model.addAttribute("userName", user.getName());
         }
         return "posts-update";
-    }
+    }// adsdasdsd
 }

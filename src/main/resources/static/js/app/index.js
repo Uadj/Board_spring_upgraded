@@ -19,6 +19,30 @@ var main = {
         $('#btn-delete').on('click', function () {
             _this.delete();
         });
+        $('#btn-sign').on('click', function () {
+            _this.sign();
+        });
+    },
+    sign : function () {
+        var data = {
+            id: $('#id').val(),
+            name: $('#name').val(),
+            password: $('#password').val(),
+            email: $('#email').val(),
+        };
+
+        $.ajax({
+            type: 'POST',
+            url: '/api/v1/user',
+            dataType: 'json',
+            contentType:'application/json; charset=utf-8',
+            data: JSON.stringify(data)
+        }).done(function() {
+            alert('회원이 등록되었습니다.');
+            window.location.href = '/';
+        }).fail(function (error) {
+            alert(JSON.stringify(error));
+        });
     },
     save : function () {
         var num = window.location.href;
