@@ -24,6 +24,6 @@ public class ReplyListResponseDto {
         this.content = entity.getContent();
         this.boardId = entity.getBoardId();
         this.author = entity.getAuthor();
-        this.modifiedDate = entity.getModifiedDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        this.modifiedDate = entity.getModifiedDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd mm:hh"));
     }
 }
