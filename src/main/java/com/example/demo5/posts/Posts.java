@@ -24,12 +24,14 @@ public class Posts extends BaseTimeEntity {
     private String content;
     private String author;
     private String boardnumber;
+    private Integer views;
     @Builder
-    public Posts(String title, String content, String author, String boardnumber){
+    public Posts(String title, String content, String author, String boardnumber, Integer views){
         this.title = title;
         this.content = content;
         this.author = author;
         this.boardnumber = boardnumber;
+        this.views = 0;
     }
 
     public void update(String title, String content, String boardnumber){

@@ -14,12 +14,14 @@ public class PostsSaveRequestDto {
     private String content;
     private String author;
     private String boardnumber;
+    private Integer views;
     @Builder
-    public PostsSaveRequestDto(String title, String content, String author, String boardnumber){
+    public PostsSaveRequestDto(String title, String content, String author, String boardnumber, Integer views){
         this.title = title;
         this.content = content;
         this.author = author;
         this.boardnumber = boardnumber;
+        this.views = 0;
     }
     public Posts toEntity(){
         return Posts.builder()

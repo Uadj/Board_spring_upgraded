@@ -10,6 +10,7 @@ public class PostsResponseDto {
     private String content;
     private String author;
     private String boardnumber;
+    private Integer views;
 
     public PostsResponseDto(Posts entity){
         this.id = entity.getId();
@@ -17,5 +18,6 @@ public class PostsResponseDto {
         this.content = entity.getContent();
         this.author = entity.getAuthor();
         this.boardnumber = entity.getBoardnumber();
+        this.views = entity.getViews();
     }
 }
