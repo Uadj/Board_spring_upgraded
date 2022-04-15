@@ -51,4 +51,16 @@ public class PostsService {
                 .map(PostsListResponseDto::new)
                 .collect(Collectors.toList());
     }
+    @Transactional(readOnly = true)
+    public List<PostsListResponseDto> findByKeyword1(String keyword){
+        return postsRepository.findByKeyword1(keyword).stream()
+                .map(PostsListResponseDto::new)
+                .collect(Collectors.toList());
+    }
+    @Transactional(readOnly = true)
+    public List<PostsListResponseDto> findByKeyword2(String keyword){
+        return postsRepository.findByKeyword2(keyword).stream()
+                .map(PostsListResponseDto::new)
+                .collect(Collectors.toList());
+    }
 }

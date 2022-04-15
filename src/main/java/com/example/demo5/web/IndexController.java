@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
@@ -34,6 +35,22 @@ public class IndexController {
     @GetMapping("/board2")
     public String b2(Model model, @LoginUser SessionUser user){
         model.addAttribute("posts", postsService.findAllDesc2());
+        if(user!=null){
+            model.addAttribute("userName", user.getName());
+        }
+        return "board2";
+    }
+    @GetMapping("/search/{keyword}")
+    public String b1search(Model model, @LoginUser SessionUser user, @PathVariable String keyword){
+        model.addAttribute("posts", postsService.findByKeyword1(keyword));
+        if(user!=null){
+            model.addAttribute("userName", user.getName());
+        }
+        return "index";
+    }
+    @GetMapping("/board2/search/{keyword}")
+    public String b2search(Model model, @LoginUser SessionUser user, @PathVariable String keyword){
+        model.addAttribute("posts", postsService.findByKeyword2(keyword));
         if(user!=null){
             model.addAttribute("userName", user.getName());
         }

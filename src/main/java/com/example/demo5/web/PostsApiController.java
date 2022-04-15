@@ -1,6 +1,7 @@
 package com.example.demo5.web;
 
 import com.example.demo5.service.PostsService;
+import com.example.demo5.web.dto.PostsListResponseDto;
 import com.example.demo5.web.dto.PostsResponseDto;
 import com.example.demo5.web.dto.PostsSaveRequestDto;
 import com.example.demo5.web.dto.PostsUpdateRequestDto;

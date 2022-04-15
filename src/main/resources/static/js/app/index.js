@@ -22,7 +22,15 @@ var main = {
         $('#btn-sign').on('click', function () {
             _this.sign();
         });
+        $('#btn-find').on('click', function () {
+                    _this.find();
+        });
     },
+    find : function () {
+            var keyword = $('#keyword').val();
+            window.location.href = '/search/'+keyword;
+            alert('검색되었습니다.');
+        },
     sign : function () {
         var data = {
             id: $('#id').val(),
@@ -62,7 +70,12 @@ var main = {
             data: JSON.stringify(data)
         }).done(function() {
             alert('글이 등록되었습니다.');
-            window.location.href = '/';
+            if(num==1) {
+                window.location.href = '/';
+            }
+            else{
+                window.location.href = '/board2';
+            }
         }).fail(function (error) {
             alert(JSON.stringify(error));
         });
@@ -119,6 +132,14 @@ var main2 = {
         $('#rbtn-delete').on('click', function () {
             _this.delete();
         });
+        $('#btn-find2').on('click', function () {
+                    _this.find();
+        });
+    },
+     find : function () {
+        var keyword = $('#keyword').val();
+        window.location.href = '/board2/search/'+keyword;
+        alert('검색되었습니다.');
     },
     save : function () {
         var data = {
