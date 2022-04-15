@@ -14,6 +14,7 @@ public class PostsListResponseDto {
     private String content;
     private String modifiedDate;
     private String boardnumber;
+    private Integer views;
 
     public PostsListResponseDto(Posts entity){
         this.id = entity.getId();
@@ -22,5 +23,6 @@ public class PostsListResponseDto {
         this.content = entity.getContent();
         this.modifiedDate = entity.getModifiedDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd mm:hh"));
         this.boardnumber = entity.getBoardnumber();
+        this.views = entity.getViews();
     }
 }
