@@ -1,31 +1,103 @@
-<main class="form-signin" style="max-width: 100%;">
-    ...
+{{>layout/header}}
 
-    <div class="card mb-2 mt-5">
-        <div class="card-header bg-light">
-            <i class="fa fa-comment fa"></i> 댓글
-        </div>
-        <div class="card-body">
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="1"></textarea>
-                    <button type="button" class="btn btn-dark mt-3">등록</button>
-                </li>
-            </ul>
-        </div>
+<div>
+    <div class = "post_title">
+        <p>{{post.title}}</p>
     </div>
-    <br/>
-    <div class="card">
-        <div class="card-header">댓글</div>
-        <ul id="reply--box" class="list-group">
-            <li id="reply--1" class="list-group-item d-flex justify-content-between">
-                <div>댓글 내용입니다.!</div>
-                <div class="d-flex">
-                    <div class="text-monospace">작성자: ssarlength &nbsp;</div>
-                    <button class="badge btn-warning">수정</button><span> | </span>
-                    <button class="badge btn-danger">삭제</button>
-                </div>
-            </li>
-        </ul>
+    <div>
+        <p>최종 수정일 {{post.modifiedDate}}, by {{post.author}}</p>
     </div>
-</main>
+    <hr width="100%" color="#bcbcbc">
+    <div class = "post_content">
+        <p>{{post.content}}</p>
+    </div>
+</div>
+
+<div class="card mb-2 mt-5">
+    <div class="card-header bg-light">
+        <i class="fa fa-comment fa"></i> 댓글
+    </div>
+
+</div>
+
+<div class="col-md-12">
+    <!-- 목록 출력 영역 -->
+    <table class="table table-horizontal table-bordered">
+        <thead class="thead-strong">
+        <tr>
+            <th class = "author">작성자</th>
+            <th class = "content">내용</th>
+            <th class = "uptime">최종수정일</th>
+        </tr>
+        </thead>
+        <tbody id="tbody">
+        {{#reply}}
+            <tr>
+                <td>{{author}}</td>
+                <td>{{content}}</td>
+                <td id="date">{{modifiedDate}}</td>
+            </tr>
+        {{/reply}}
+        </tbody>
+    </table>
+</div>
+<div class="card-body">
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <input type="text" id="rauthor" placeholder="작성자 이름"></input>
+            <textarea class="form-control" id="rcontent" placeholder="댓글 내용"></textarea>
+            <button type="button" class="btn btn-dark mt-3" id="rbtn-save">등록</button>
+        </li>
+    </ul>
+</div>
+<style>
+
+.post_title{
+    background-color: white;
+    font-size : xx-large;
+    text-align: center;
+}
+.post_content {
+    font-size : large;
+    padding-bottom: 120px;
+    padding-top: 40px;
+    padding-left: 150px;
+    padding-right: 150px;
+}
+
+.area_title {
+    margin: 0 0 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #efefef;
+}
+.cover_item #wrapArticleInfo {
+    bottom: 27px;
+    display: block;
+    font-size: 12px;
+    position: absolute;
+    right: 50%;
+    transform: translate(50%,1px);
+    -webkit-transform: translate(50%,1px);
+    -ms-transform: translate(50%);
+    width: 700px;
+}
+.text_author {
+    color: #666;
+}
+</style>
+<script>
+    var num = window.location.href;
+    num = num.slice(-1);
+    const source = document.getElementById('boardnumber');
+    source.innerHTML = num;
+    const date = document.getElementById('date');
+    var datetime = date.innerHTML;
+    var y = datetime.slice(0,4);
+    var m = datetime.slice(6,7);
+    var d = datetime.slice(9,10);
+    var h = datetime.slice(11,12);
+    var min = datetime.slice(13,14);
+    date.innerHTML = y + "년 " + m  + "월 " + d + "일 " + ;
+</script>
+
+{{>layout/footer}}

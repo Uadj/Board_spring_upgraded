@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Getter
@@ -14,11 +15,13 @@ public class PostsUpdateRequestDto {
     private String title;
     private String content;
     private String boardnumber;
+    private String modified_Date;
     @Builder
-    public PostsUpdateRequestDto(String title, String content, String boardnumber){
+    public PostsUpdateRequestDto(String title, String content, String boardnumber, String modified_Date){
         this.title = title;
         this.content = content;
         this.boardnumber = boardnumber;
+        this.modified_Date = modified_Date;
     }
 
 }
