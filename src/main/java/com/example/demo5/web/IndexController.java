@@ -77,4 +77,15 @@ public class IndexController {
         }
         return "posts-update";
     }// adsdasdsd
+    @GetMapping("/posts/viewer/{id}")
+    public String postsView(@PathVariable Long id, Model model, @LoginUser SessionUser user) {
+        PostsResponseDto dto = postsService.findById(id);
+        System.out.println(replyService.findAllDesc(String.valueOf(id)).toString());
+        model.addAttribute("reply", replyService.findAllDesc(String.valueOf(id)));
+        model.addAttribute("post", dto);
+        if(user!=null){
+            model.addAttribute("userName", user.getName());
+        }
+        return "posts-view";
+    }
 }

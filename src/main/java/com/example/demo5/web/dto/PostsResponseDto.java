@@ -3,6 +3,8 @@ package com.example.demo5.web.dto;
 import com.example.demo5.posts.Posts;
 import lombok.Getter;
 
+import java.time.format.DateTimeFormatter;
+
 @Getter
 public class PostsResponseDto {
     private Long id;
@@ -11,6 +13,7 @@ public class PostsResponseDto {
     private String author;
     private String boardnumber;
     private Integer views;
+    private String modifiedDate;
 
     public PostsResponseDto(Posts entity){
         this.id = entity.getId();
@@ -19,5 +22,6 @@ public class PostsResponseDto {
         this.author = entity.getAuthor();
         this.boardnumber = entity.getBoardnumber();
         this.views = entity.getViews();
+        this.modifiedDate = entity.getModifiedDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd mm:hh"));
     }
 }
